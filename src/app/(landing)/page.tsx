@@ -9,6 +9,7 @@ import Image from "next/image"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Icons } from "@/components/icons"
+import LightRays from "@/components/LightRays"
 
 const Page = () => {
   const codeSnippet = `await fetch("http://localhost:3000/api/v1/events", {
@@ -28,7 +29,19 @@ const Page = () => {
 
   return (
     <>
-      <section className="relative py-24 sm:py-32 bg-brand-25">
+      <section className="relative pt-32 sm:pt-40 pb-48 sm:pb-60 bg-gray-950 text-gray-100">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+        />
         <MaxWidthWrapper className="text-center">
           <div className="relative mx-auto text-center flex flex-col items-center gap-10">
             <div>
@@ -41,16 +54,16 @@ const Page = () => {
               </Heading>
             </div>
 
-            <p className="text-base/7 text-gray-600 max-w-prose text-center text-pretty">
+            <p className="text-base/7 text-gray-400 max-w-prose text-center text-pretty">
               PingPanda is the easiest way to monitor your SaaS. Get instant
               notifications for{" "}
-              <span className="font-semibold text-gray-700">
+              <span className="font-semibold text-gray-200">
                 sales, new users, or any other event
               </span>{" "}
               sent directly to your Discord.
             </p>
 
-            <ul className="space-y-2 text-base/7 text-gray-600 text-left flex flex-col items-start">
+            <ul className="space-y-2 text-base/7 text-gray-400 text-left flex flex-col items-start">
               {[
                 "Real-time Discord alerts for critical events",
                 "Buy once, use forever",
@@ -75,11 +88,11 @@ const Page = () => {
         </MaxWidthWrapper>
       </section>
 
-      <section className="relative bg-brand-25 pb-4">
-        <div className="absolute inset-x-0 bottom-24 top-24 bg-brand-700" />
-        <div className="relative mx-auto">
-          <MaxWidthWrapper className="relative">
-            <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+      <section className="relative bg-gray-950 pb-4">
+        <div className="absolute inset-x-0 bottom-24 top-0 bg-gray-900" />
+        <div className="relative mx-auto -mt-32">
+          <MaxWidthWrapper className="relative z-10">
+            <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4 border border-gray-800 bg-gray-900/40">
               <MockDiscordUI>
                 <AnimatedList>
                   <DiscordMessage
@@ -129,7 +142,7 @@ const Page = () => {
         </div>
       </section>
 
-      <section className="relative py-24 sm:py-32 bg-brand-25">
+      <section className="relative py-24 sm:py-32 bg-gray-950 text-gray-100">
         <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-20">
           <div>
             <h2 className="text-center text-base/7 font-semibold text-brand-600">
@@ -141,14 +154,14 @@ const Page = () => {
           <div className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
             {/* first bento grid element */}
             <div className="relative lg:row-span-2">
-              <div className="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem]" />
+              <div className="absolute inset-px rounded-lg bg-gray-900 lg:rounded-l-[2rem]" />
 
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
                 <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-brand-950 max-lg:text-center">
+                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-white max-lg:text-center">
                     Real-time notifications
                   </p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                  <p className="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
                     Get notified about critical events the moment they happen,
                     no matter if you're at home or on the go.
                   </p>
@@ -171,13 +184,13 @@ const Page = () => {
 
             {/* second bento grid element */}
             <div className="relative max-lg:row-start-1">
-              <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]" />
+              <div className="absolute inset-px rounded-lg bg-gray-900 max-lg:rounded-t-[2rem]" />
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
                 <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-brand-950 max-lg:text-center">
+                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-white max-lg:text-center">
                     Track Any Event
                   </p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                  <p className="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
                     From new user signups to successful payments, PingPanda
                     notifies you for all critical events in your SaaS.
                   </p>
@@ -198,13 +211,13 @@ const Page = () => {
 
             {/* third bento grid element */}
             <div className="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
-              <div className="absolute inset-px rounded-lg bg-white" />
+              <div className="absolute inset-px rounded-lg bg-gray-900" />
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
                 <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-brand-950 max-lg:text-center">
+                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-white max-lg:text-center">
                     Track Any Properties
                   </p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                  <p className="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
                     Add any custom data you like to an event, such as a user
                     email, a purchase amount or an exceeded quota.
                   </p>
@@ -226,14 +239,14 @@ const Page = () => {
 
             {/* fourth bento grid element */}
             <div className="relative lg:row-span-2">
-              <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
+              <div className="absolute inset-px rounded-lg bg-gray-900 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
 
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
                 <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-brand-950 max-lg:text-center">
+                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-white max-lg:text-center">
                     Easy Integration
                   </p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                  <p className="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
                     Connect PingPanda with your existing workflows in minutes
                     and call our intuitive logging API from any language.
                   </p>
@@ -280,7 +293,7 @@ const Page = () => {
         </MaxWidthWrapper>
       </section>
 
-      <section className="relative py-24 sm:py-32 bg-white">
+      <section className="relative py-24 sm:py-32 bg-gray-950">
         <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-20">
           <div>
             <h2 className="text-center text-base/7 font-semibold text-brand-600">
@@ -291,7 +304,7 @@ const Page = () => {
 
           <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
             {/* first customer review */}
-            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tr-none lg:rounded-l-[2rem]">
+            <div className="flex flex-auto flex-col gap-4 bg-gray-900 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tr-none lg:rounded-l-[2rem]">
               <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
                 <Star className="size-5 text-brand-600 fill-brand-600" />
                 <Star className="size-5 text-brand-600 fill-brand-600" />
@@ -300,7 +313,7 @@ const Page = () => {
                 <Star className="size-5 text-brand-600 fill-brand-600" />
               </div>
 
-              <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
+              <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-white text-center lg:text-left text-pretty">
                 PingPanda has been a game-changer for me. I've been using it for
                 two months now and seeing sales pop up in real-time is super
                 satisfying.
@@ -315,17 +328,17 @@ const Page = () => {
                   height={48}
                 />
                 <div className="flex flex-col items-center sm:items-start">
-                  <p className="font-semibold flex items-center">
+                  <p className="font-semibold flex items-center text-white">
                     Freya Larsson
                     <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
                   </p>
-                  <p className="text-sm text-gray-600">@itsfreya</p>
+                  <p className="text-sm text-gray-400">@itsfreya</p>
                 </div>
               </div>
             </div>
 
             {/* second customer review */}
-            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-b-[2rem] lg:rounded-bl-none lg:rounded-r-[2rem]">
+            <div className="flex flex-auto flex-col gap-4 bg-gray-900 p-6 sm:p-8 lg:p-16 rounded-b-[2rem] lg:rounded-bl-none lg:rounded-r-[2rem]">
               <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
                 <Star className="size-5 text-brand-600 fill-brand-600" />
                 <Star className="size-5 text-brand-600 fill-brand-600" />
@@ -334,7 +347,7 @@ const Page = () => {
                 <Star className="size-5 text-brand-600 fill-brand-600" />
               </div>
 
-              <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
+              <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-white text-center lg:text-left text-pretty">
                 PingPanda's been paying off for our SaaS. Nice to have simple
                 way to see how we're doing day-to-day. Definitely makes our
                 lives easier.
@@ -349,11 +362,11 @@ const Page = () => {
                   height={48}
                 />
                 <div className="flex flex-col items-center sm:items-start">
-                  <p className="font-semibold flex items-center">
+                  <p className="font-semibold flex items-center text-white">
                     Kai Durant
                     <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
                   </p>
-                  <p className="text-sm text-gray-600">@kdurant_</p>
+                  <p className="text-sm text-gray-400">@kdurant_</p>
                 </div>
               </div>
             </div>
