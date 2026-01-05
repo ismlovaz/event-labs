@@ -5,7 +5,8 @@ import Stripe from "stripe"
 
 export async function POST(req: Request) {
   const body = await req.text()
-  const signature = await headers().get("stripe-signature")
+  const headersObj = await headers()
+  const signature = headersObj.get("stripe-signature")
 
   const event = stripe.webhooks.constructEvent(
     body,

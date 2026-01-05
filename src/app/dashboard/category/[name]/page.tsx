@@ -5,13 +5,14 @@ import { notFound } from "next/navigation"
 import { CategoryPageContent } from "./category-page-content"
 
 interface PageProps {
-  params: {
+  params: Promise<{
     name: string | string[] | undefined
-  }
+  }>
 }
 
 const Page = async ({ params }: PageProps) => {
-  if (typeof params.name !== "string") return notFound()
+  const { name } = await params
+  if (typeof name !== "string") return notFound()
 
   const auth = await currentUser()
 
@@ -28,7 +29,7 @@ const Page = async ({ params }: PageProps) => {
   const category = await db.eventCategory.findUnique({
     where: {
       name_userId: {
-        name: params.name,
+        name: name,
         userId: user.id,
       },
     },
