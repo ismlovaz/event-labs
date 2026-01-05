@@ -2,6 +2,7 @@ import { Heading } from "@/components/heading"
 import { MaxWidthWrapper } from "@/components/max-width-wrapper"
 import { Check, Star } from "lucide-react"
 import { ShinyButton } from "@/components/shiny-button"
+import { MagicBento, MagicCard } from "@/components/MagicBento"
 import { MockDiscordUI } from "@/components/mock-discord-ui"
 import { AnimatedList, AnimatedListItem } from "@/components/ui/animated-list"
 import { DiscordMessage } from "@/components/discord-message"
@@ -151,10 +152,10 @@ const Page = () => {
             <Heading>Stay ahead with real-time insights</Heading>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
+          <MagicBento className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
             {/* first bento grid element */}
-            <div className="relative lg:row-span-2">
-              <div className="absolute inset-px rounded-lg bg-gray-900 lg:rounded-l-[2rem]" />
+            <MagicCard className="relative lg:row-span-2 group" enableStars={true} glowColor="132, 0, 255">
+              <div className="absolute inset-px rounded-lg bg-[#060010] lg:rounded-l-[2rem]" />
 
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
                 <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
@@ -168,7 +169,7 @@ const Page = () => {
                 </div>
 
                 <div className="relative min-h-[30rem] w-full grow [container-type:inline-size] max-lg:mx-auto max-lg:max-w-sm">
-                  <div className="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl">
+                  <div className="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-[#060010] shadow-2xl">
                     <Image
                       className="size-full object-cover object-top"
                       src="/phone-screen.png"
@@ -179,12 +180,12 @@ const Page = () => {
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]" />
-            </div>
+              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-white/10 lg:rounded-l-[2rem]" />
+            </MagicCard>
 
             {/* second bento grid element */}
-            <div className="relative max-lg:row-start-1">
-              <div className="absolute inset-px rounded-lg bg-gray-900 max-lg:rounded-t-[2rem]" />
+            <MagicCard className="relative max-lg:row-start-1 group" enableStars={true} glowColor="132, 0, 255">
+              <div className="absolute inset-px rounded-lg bg-[#060010] max-lg:rounded-t-[2rem]" />
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
                 <div className="px-8 pt-8 sm:px-10 sm:pt-10">
                   <p className="mt-2 text-lg/7 font-medium tracking-tight text-white max-lg:text-center">
@@ -206,12 +207,12 @@ const Page = () => {
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem]" />
-            </div>
+              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-white/10 max-lg:rounded-t-[2rem]" />
+            </MagicCard>
 
             {/* third bento grid element */}
-            <div className="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
-              <div className="absolute inset-px rounded-lg bg-gray-900" />
+            <MagicCard className="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2 group" enableStars={true} glowColor="132, 0, 255">
+              <div className="absolute inset-px rounded-lg bg-[#060010]" />
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
                 <div className="px-8 pt-8 sm:px-10 sm:pt-10">
                   <p className="mt-2 text-lg/7 font-medium tracking-tight text-white max-lg:text-center">
@@ -234,12 +235,12 @@ const Page = () => {
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5" />
-            </div>
+              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-white/10" />
+            </MagicCard>
 
             {/* fourth bento grid element */}
-            <div className="relative lg:row-span-2">
-              <div className="absolute inset-px rounded-lg bg-gray-900 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
+            <MagicCard className="relative lg:row-span-2 group" enableStars={true} glowColor="132, 0, 255">
+              <div className="absolute inset-px rounded-lg bg-[#060010] max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
 
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
                 <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
@@ -253,7 +254,7 @@ const Page = () => {
                 </div>
 
                 <div className="relative min-h-[30rem] w-full grow">
-                  <div className="absolute bottom-0 left-10 right-0 top-10 overflow-hidden rounded-tl-xl bg-gray-900 shadow-2xl">
+                  <div className="absolute bottom-0 left-10 right-0 top-10 overflow-hidden rounded-tl-xl bg-[#060010] shadow-2xl">
                     <div className="flex bg-gray-800/40 ring-1 ring-white/5">
                       <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
                         <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
@@ -287,9 +288,9 @@ const Page = () => {
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
-            </div>
-          </div>
+              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-white/10 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
+            </MagicCard>
+          </MagicBento>
         </MaxWidthWrapper>
       </section>
 
