@@ -62,6 +62,15 @@ export const CategoryPageContent = ({
 	const { data: pollingData } = useQuery({
 		queryKey: ["category", category.name, "hasEvents"],
 		initialData: { hasEvents: initialHasEvents },
+		queryFn: async () => {
+			const res = await client.category.pollCategory.$get({
+				name: category.name,
+			})
+			return await res.json()
+		},
+		refetchInterval: (query) => {
+			return query.state.data?.hasEvents ? false : 1000
+		},
 	})
 
 	const { data, isFetching } = useQuery({
