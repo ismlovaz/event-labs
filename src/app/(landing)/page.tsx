@@ -12,6 +12,7 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Icons } from "@/components/icons"
 import LightRays from "@/components/light-rays"
 import { Reviews } from "@/components/reviews"
+import { FaqsSection } from "@/components/faqs"
 
 const Page = () => {
   const codeSnippet = `await fetch("http://localhost:3000/api/v1/events", {
@@ -295,7 +296,7 @@ const Page = () => {
         </MaxWidthWrapper>
       </section>
 
-      <section className="relative py-24 sm:py-32 bg-gray-950">
+      <section className="relative py-12 sm:py-32 bg-gray-950">
         <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-20">
           <div>
             <h2 className="text-center text-base/7 font-semibold text-brand-600">
@@ -304,7 +305,12 @@ const Page = () => {
             <Heading className="text-center">What our customers say</Heading>
           </div>
           <Reviews />
+        </MaxWidthWrapper>
+      </section>
 
+      <section className="relative py-12 sm:py-32 bg-gray-950">
+        <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-20">
+          <FaqsSection />
           <ShinyButton
             href="/sign-up"
             className="relative z-10 h-14 w-full max-w-xs text-base shadow-lg transition-shadow duration-300 hover:shadow-xl"
