@@ -44,8 +44,8 @@ export const DiscordMessage = ({
         <Image
           src={avatarSrc}
           alt={avatarAlt}
-          width={40}
-          height={40}
+          width={25}
+          height={25}
           className="object-cover rounded-full mr-3"
         />
       </div>

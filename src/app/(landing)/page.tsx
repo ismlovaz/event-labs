@@ -11,6 +11,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Icons } from "@/components/icons"
 import LightRays from "@/components/LightRays"
+import { Reviews } from "@/components/reviews"
 
 const Page = () => {
   const codeSnippet = `await fetch("http://localhost:3000/api/v1/events", {
@@ -49,14 +50,14 @@ const Page = () => {
               <Heading>
                 <span>Real-Time SaaS Insights,</span>
                 <br />
-                <span className="relative bg-gradient-to-r from-brand-700 to-brand-800 text-transparent bg-clip-text">
+                <span className="relative bg-gradient-to-r from-brand-300 to-brand-500 text-transparent bg-clip-text">
                   Delivered to Your Discord
                 </span>
               </Heading>
             </div>
 
-            <p className="text-base/7 text-gray-400 max-w-prose text-center text-pretty">
-              PingPanda is the easiest way to monitor your SaaS. Get instant
+            <p className="text-base/7 text-gray-200 max-w-prose text-center text-pretty">
+              EventLabs is the easiest way to monitor your SaaS. Get instant
               notifications for{" "}
               <span className="font-semibold text-gray-200">
                 sales, new users, or any other event
@@ -64,7 +65,7 @@ const Page = () => {
               sent directly to your Discord.
             </p>
 
-            <ul className="space-y-2 text-base/7 text-gray-400 text-left flex flex-col items-start">
+            <ul className="space-y-2 text-base/7 text-gray-200 text-left flex flex-col items-start">
               {[
                 "Real-time Discord alerts for critical events",
                 "Buy once, use forever",
@@ -97,9 +98,9 @@ const Page = () => {
               <MockDiscordUI>
                 <AnimatedList>
                   <DiscordMessage
-                    avatarSrc="/brand-asset-profile-picture.png"
-                    avatarAlt="PingPanda Avatar"
-                    username="PingPanda"
+                    avatarSrc="/event.png"
+                    avatarAlt="EventLabs Avatar"
+                    username="EventLabs"
                     timestamp="Today at 12:35PM"
                     badgeText="SignUp"
                     badgeColor="#43b581"
@@ -110,9 +111,9 @@ const Page = () => {
                     }}
                   />
                   <DiscordMessage
-                    avatarSrc="/brand-asset-profile-picture.png"
-                    avatarAlt="PingPanda Avatar"
-                    username="PingPanda"
+                    avatarSrc="/event.png"
+                    avatarAlt="EventLabs Avatar"
+                    username="EventLabs"
                     timestamp="Today at 12:35PM"
                     badgeText="Revenue"
                     badgeColor="#faa61a"
@@ -124,9 +125,9 @@ const Page = () => {
                     }}
                   />
                   <DiscordMessage
-                    avatarSrc="/brand-asset-profile-picture.png"
-                    avatarAlt="PingPanda Avatar"
-                    username="PingPanda"
+                    avatarSrc="/event.png"
+                    avatarAlt="EventLabs Avatar"
+                    username="EventLabs"
                     timestamp="Today at 5:11AM"
                     badgeText="Milestone"
                     badgeColor="#5865f2"
@@ -192,7 +193,7 @@ const Page = () => {
                     Track Any Event
                   </p>
                   <p className="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
-                    From new user signups to successful payments, PingPanda
+                    From new user signups to successful payments, EventLabs
                     notifies you for all critical events in your SaaS.
                   </p>
                 </div>
@@ -248,7 +249,7 @@ const Page = () => {
                     Easy Integration
                   </p>
                   <p className="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
-                    Connect PingPanda with your existing workflows in minutes
+                    Connect EventLabs with your existing workflows in minutes
                     and call our intuitive logging API from any language.
                   </p>
                 </div>
@@ -258,7 +259,7 @@ const Page = () => {
                     <div className="flex bg-gray-800/40 ring-1 ring-white/5">
                       <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
                         <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
-                          pingpanda.js
+                          eventlabs.js
                         </div>
                       </div>
                     </div>
@@ -302,76 +303,7 @@ const Page = () => {
             </h2>
             <Heading className="text-center">What our customers say</Heading>
           </div>
-
-          <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
-            {/* first customer review */}
-            <div className="flex flex-auto flex-col gap-4 bg-gray-900 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tr-none lg:rounded-l-[2rem]">
-              <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-              </div>
-
-              <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-white text-center lg:text-left text-pretty">
-                PingPanda has been a game-changer for me. I've been using it for
-                two months now and seeing sales pop up in real-time is super
-                satisfying.
-              </p>
-
-              <div className="flex flex-col justify-center lg:justify-start sm:flex-row items-center sm:items-start gap-4 mt-2">
-                <Image
-                  src="/user-2.png"
-                  className="rounded-full object-cover"
-                  alt="Random user"
-                  width={48}
-                  height={48}
-                />
-                <div className="flex flex-col items-center sm:items-start">
-                  <p className="font-semibold flex items-center text-white">
-                    Freya Larsson
-                    <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
-                  </p>
-                  <p className="text-sm text-gray-400">@itsfreya</p>
-                </div>
-              </div>
-            </div>
-
-            {/* second customer review */}
-            <div className="flex flex-auto flex-col gap-4 bg-gray-900 p-6 sm:p-8 lg:p-16 rounded-b-[2rem] lg:rounded-bl-none lg:rounded-r-[2rem]">
-              <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-              </div>
-
-              <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-white text-center lg:text-left text-pretty">
-                PingPanda's been paying off for our SaaS. Nice to have simple
-                way to see how we're doing day-to-day. Definitely makes our
-                lives easier.
-              </p>
-
-              <div className="flex flex-col justify-center lg:justify-start sm:flex-row items-center sm:items-start gap-4 mt-2">
-                <Image
-                  src="/user-1.png"
-                  className="rounded-full object-cover"
-                  alt="Random user"
-                  width={48}
-                  height={48}
-                />
-                <div className="flex flex-col items-center sm:items-start">
-                  <p className="font-semibold flex items-center text-white">
-                    Kai Durant
-                    <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
-                  </p>
-                  <p className="text-sm text-gray-400">@kdurant_</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Reviews />
 
           <ShinyButton
             href="/sign-up"

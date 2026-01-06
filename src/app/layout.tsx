@@ -14,9 +14,9 @@ const eb_garamond = EB_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: "jStack App",
-  description: "Created using jStack",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  title: "EventLabs",
+  description: "EventLabs - your events tracking SaaS made for developers",
+  icons: [{ rel: "icon", url: "/favicon.png" }],
 }
 
 export default function RootLayout({

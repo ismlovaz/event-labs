@@ -13,7 +13,7 @@ export const UpgradePageContent = ({ plan }: { plan: Plan }) => {
 
   const { mutate: createCheckoutSession } = useMutation({
     mutationFn: async () => {
-    
+
       const res = await client.payment.createCheckoutSession.$post()
 
       return await res.json()
@@ -39,7 +39,7 @@ export const UpgradePageContent = ({ plan }: { plan: Plan }) => {
         </h1>
         <p className="text-sm/6 text-gray-600 max-w-prose">
           {plan === "PRO"
-            ? "Thank you for supporting PingPanda. Find your increased usage limits below."
+            ? "Thank you for supporting EventLabs. Find your increased usage limits below."
             : "Get access to more events, categories and premium support."}
         </p>
       </div>
