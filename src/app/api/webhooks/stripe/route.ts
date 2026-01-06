@@ -8,23 +8,39 @@ export async function POST(req: Request) {
   const headersObj = await headers()
   const signature = headersObj.get("stripe-signature")
 
-  const event = stripe.webhooks.constructEvent(
-    body,
-    signature ?? "",
-    process.env.STRIPE_WEBHOOK_SECRET ?? ""
-  )
+  console.log("[Stripe Webhook] Received request")
+  console.log("[Stripe Webhook] Signature present:", !!signature)
+
+  let event: Stripe.Event;
+
+  try {
+    event = stripe.webhooks.constructEvent(
+      body,
+      signature ?? "",
+      process.env.STRIPE_WEBHOOK_SECRET ?? ""
+    )
+  } catch (err) {
+    console.error("[Stripe Webhook] Error verifying signature:", err)
+    return new Response("Webhook Error", { status: 400 })
+  }
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session
 
     const { userId } = session.metadata || { userId: null }
+    const clientId = session.client_reference_id
 
-    if (!userId) {
+    const id = userId || clientId
+
+    if (!id) {
+      console.error("[Stripe Webhook] No user ID found in metadata or client_reference_id")
       return new Response("Invalid metadata", { status: 400 })
     }
 
+    console.log("[Stripe Webhook] Upgrading user:", id)
+
     await db.user.update({
-      where: { id: userId },
+      where: { id },
       data: { plan: "PRO" },
     })
   }
