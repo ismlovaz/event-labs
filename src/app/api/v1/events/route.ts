@@ -59,7 +59,7 @@ export const POST = async (req: NextRequest) => {
 		const currentMonth = currentData.getMonth() + 1
 		const currentYear = currentData.getFullYear()
 
-		const quota = await db.quota.findUnique({
+		const quota = await db.quota.findFirst({
 			where: {
 				userId: user.id,
 				month: currentMonth,
@@ -151,16 +151,21 @@ export const POST = async (req: NextRequest) => {
 				data: { deliveryStatus: "DELIVERED" },
 			})
 
-			await db.quota.upsert({
-				where: { userId: user.id, month: currentMonth, year: currentYear },
-				update: { count: { increment: 1 } },
-				create: {
-					userId: user.id,
-					month: currentMonth,
-					year: currentYear,
-					count: 1,
-				},
-			})
+			if (quota) {
+				await db.quota.update({
+					where: { id: quota.id },
+					data: { count: { increment: 1 } },
+				})
+			} else {
+				await db.quota.create({
+					data: {
+						userId: user.id,
+						month: currentMonth,
+						year: currentYear,
+						count: 1,
+					},
+				})
+			}
 		} catch (err) {
 			await db.event.update({
 				where: { id: event.id },

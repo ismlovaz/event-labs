@@ -66,6 +66,10 @@ export const categoryRouter = router({
     .mutation(async ({ c, input, ctx }) => {
       const { name } = input
 
+      await db.event.deleteMany({
+        where: { EventCategory: { name, userId: ctx.user.id } },
+      })
+
       await db.eventCategory.delete({
         where: { name_userId: { name, userId: ctx.user.id } },
       })
