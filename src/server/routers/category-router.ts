@@ -22,49 +22,41 @@ export const categoryRouter = router({
         color: true,
         updatedAt: true,
         createdAt: true,
-        events: {
-          where: { createdAt: { gte: firstDayOfMonth } },
-          select: {
-            fields: true,
-            createdAt: true,
-          },
-        },
-        _count: {
-          select: {
-            events: {
-              where: { createdAt: { gte: firstDayOfMonth } },
-            },
-          },
-        },
       },
       orderBy: { updatedAt: "desc" },
     })
 
-    const categoriesWithCounts = categories.map((category) => {
-      const uniqueFieldNames = new Set<string>()
-      let lastPing: Date | null = null
+    const categoriesWithCounts = await Promise.all(
+      categories.map(async (category) => {
+        const [lastPing, eventsCount] = await Promise.all([
+          db.event.findFirst({
+            where: {
+              EventCategory: { id: category.id },
+            },
+            orderBy: { createdAt: "desc" },
+            select: { createdAt: true },
+          }),
+          db.event.count({
+            where: {
+              EventCategory: { id: category.id },
+              createdAt: { gte: firstDayOfMonth },
+            },
+          }),
+        ])
 
-      category.events.forEach((event) => {
-        Object.keys(event.fields as object).forEach((fieldName) => {
-          uniqueFieldNames.add(fieldName)
-        })
-        if (!lastPing || event.createdAt > lastPing) {
-          lastPing = event.createdAt
+        return {
+          id: category.id,
+          name: category.name,
+          emoji: category.emoji,
+          color: category.color,
+          updatedAt: category.updatedAt,
+          createdAt: category.createdAt,
+          uniqueFieldCount: 0, // Expensive operation disabled for performance
+          eventsCount,
+          lastPing: lastPing?.createdAt || null,
         }
       })
-
-      return {
-        id: category.id,
-        name: category.name,
-        emoji: category.emoji,
-        color: category.color,
-        updatedAt: category.updatedAt,
-        createdAt: category.createdAt,
-        uniqueFieldCount: uniqueFieldNames.size,
-        eventsCount: category._count.events,
-        lastPing,
-      }
-    })
+    )
 
     return c.superjson({ categories: categoriesWithCounts })
   }),
@@ -206,26 +198,7 @@ export const categoryRouter = router({
             createdAt: { gte: startDate },
           },
         }),
-        db.event
-          .findMany({
-            where: {
-              EventCategory: { name, userId: ctx.user.id },
-              createdAt: { gte: startDate },
-            },
-            select: {
-              fields: true,
-            },
-            distinct: ["fields"],
-          })
-          .then((events) => {
-            const fieldNames = new Set<string>()
-            events.forEach((event) => {
-              Object.keys(event.fields as object).forEach((fieldName) => {
-                fieldNames.add(fieldName)
-              })
-            })
-            return fieldNames.size
-          }),
+        Promise.resolve(0), // Unique field count calculation disabled for performance
       ])
 
       return c.superjson({

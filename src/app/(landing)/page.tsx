@@ -4,15 +4,17 @@ import { Check, Star } from "lucide-react"
 import { ShinyButton } from "@/components/shiny-button"
 import { MagicBento, MagicCard } from "@/components/magic-bento"
 import { MockDiscordUI } from "@/components/mock-discord-ui"
-import { AnimatedList, AnimatedListItem } from "@/components/ui/animated-list"
+import { AnimatedList } from "@/components/ui/animated-list"
 import { DiscordMessage } from "@/components/discord-message"
 import Image from "next/image"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Icons } from "@/components/icons"
 import LightRays from "@/components/light-rays"
-import { Reviews } from "@/components/reviews"
-import { FaqsSection } from "@/components/faqs"
+import dynamic from "next/dynamic"
+
+const Reviews = dynamic(() => import("@/components/reviews").then((mod) => mod.Reviews))
+const FaqsSection = dynamic(() => import("@/components/faqs").then((mod) => mod.FaqsSection))
 
 const Page = () => {
   const codeSnippet = `await fetch("http://localhost:3000/api/v1/events", {
@@ -177,6 +179,7 @@ const Page = () => {
                       src="/phone-screen.png"
                       alt="Phone screen displaying app interface"
                       fill
+                      priority
                     />
                   </div>
                 </div>
