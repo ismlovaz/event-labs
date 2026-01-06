@@ -6,6 +6,7 @@ import { z } from "zod"
 import { CATEGORY_NAME_VALIDATOR } from "@/lib/validators/category-validator"
 import { parseColor } from "@/utils"
 import { HTTPException } from "hono/http-exception"
+import { FREE_QUOTA, PRO_QUOTA } from "@/config"
 
 export const categoryRouter = router({
   getEventCategories: privateProcedure.query(async ({ c, ctx }) => {
@@ -95,7 +96,18 @@ export const categoryRouter = router({
       const { user } = ctx
       const { color, name, emoji } = input
 
-      // TODO: ADD PAID PLAN LOGIC
+      // TODO: ADD PAID PLAN LOGIC - DONE
+      const count = await db.eventCategory.count({
+        where: { userId: user.id },
+      })
+
+      const limits = user.plan === "PRO" ? PRO_QUOTA : FREE_QUOTA
+
+      if (count >= limits.maxEventCategories) {
+        throw new HTTPException(403, {
+          message: `You have reached the limit of ${limits.maxEventCategories} categories for your plan. Please upgrade to PRO to create more categories.`,
+        })
+      }
 
       const eventCategory = await db.eventCategory.create({
         data: {

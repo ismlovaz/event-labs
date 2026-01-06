@@ -12,6 +12,7 @@ import { Input } from "./ui/input"
 import { cn } from "@/utils"
 import { Button } from "./ui/button"
 import { client } from "@/lib/client"
+import Link from "next/link"
 
 const EVENT_CATEGORY_VALIDATOR = z.object({
   name: CATEGORY_NAME_VALIDATOR,
@@ -61,24 +62,46 @@ export const CreateEventCategoryModal = ({
   const [isOpen, setIsOpen] = useState(false)
   const queryClient = useQueryClient()
 
-  const { mutate: createEventCategory, isPending } = useMutation({
-    mutationFn: async (data: EventCategoryForm) => {
-      await client.category.createEventCategory.$post(data)
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user-event-categories"] })
-      setIsOpen(false)
-    },
-  })
-
   const {
     register,
     handleSubmit,
     watch,
     setValue,
+    setError,
     formState: { errors },
   } = useForm<EventCategoryForm>({
     resolver: zodResolver(EVENT_CATEGORY_VALIDATOR),
+  })
+
+  const { mutate: createEventCategory, isPending } = useMutation({
+    mutationFn: async (data: EventCategoryForm) => {
+      try {
+        const res = await client.category.createEventCategory.$post(data)
+        if (!res.ok) {
+          if (res.status === 403) {
+            throw new Error("PLAN_LIMIT_REACHED")
+          }
+          throw new Error("Something went wrong")
+        }
+        return await res.json()
+      } catch (error: any) {
+        if (error.message?.includes("403") || error.message?.includes("Forbidden")) {
+          throw new Error("PLAN_LIMIT_REACHED")
+        }
+        throw error
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user-event-categories"] })
+      setIsOpen(false)
+    },
+    onError: (error) => {
+      if (error.message === "PLAN_LIMIT_REACHED" || error.message === "Forbidden") {
+        setError("name", { message: "PLAN_LIMIT_REACHED" })
+      } else {
+        setError("name", { message: error.message })
+      }
+    },
   })
 
   const color = watch("color")
@@ -121,7 +144,20 @@ export const CreateEventCategoryModal = ({
               />
               {errors.name ? (
                 <p className="mt-1 text-sm text-red-500">
-                  {errors.name.message}
+                  {errors.name.message === "PLAN_LIMIT_REACHED" ? (
+                    <span>
+                      You have reached the category limit for the Free plan.{" "}
+                      <Link
+                        href="/dashboard/upgrade"
+                        className="underline text-brand-500 hover:text-brand-400"
+                      >
+                        Upgrade to Pro
+                      </Link>{" "}
+                      to create more.
+                    </span>
+                  ) : (
+                    errors.name.message
+                  )}
                 </p>
               ) : null}
             </div>
