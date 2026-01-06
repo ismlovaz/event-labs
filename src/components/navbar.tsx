@@ -43,7 +43,7 @@ export const Navbar = async () => {
                   className={buttonVariants({
                     size: "sm",
                     variant: "ghost",
-                    className: "text-white hover:text-white/80",
+                    className: "text-white hover:bg-white/10 hover:text-white",
                   })}
                 >
                   Pricing
@@ -53,7 +53,7 @@ export const Navbar = async () => {
                   className={buttonVariants({
                     size: "sm",
                     variant: "ghost",
-                    className: "text-white hover:text-white/80",
+                    className: "text-white hover:bg-white/10 hover:text-white",
                   })}
                 >
                   Sign in
