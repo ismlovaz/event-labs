@@ -18,14 +18,6 @@ export const DashboardEmptyState = () => {
 
   return (
     <Card className="flex flex-col items-center justify-center rounded-2xl flex-1 text-center p-6 bg-gray-900 border-gray-800">
-      <div className="flex justify-center w-full">
-        <img
-          src="/brand-asset-wave.png"
-          alt="No categories"
-          className="size-48 -mt-24 opacity-80"
-        />
-      </div>
-
       <h1 className="mt-2 text-xl/8 font-medium tracking-tight text-white">
         No Event Categories Yet
       </h1>
