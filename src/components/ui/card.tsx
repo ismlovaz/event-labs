@@ -14,7 +14,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "relative rounded-lg bg-gray-50 text-card-foreground",
+        "relative rounded-lg bg-gray-900/50 text-gray-50",
         className
       )}
       {...props}
@@ -22,8 +22,8 @@ export const Card = ({
       <div className={cn("relative z-10 p-6", contentClassName)}>
         {children}
       </div>
-      <div className="absolute z-0 inset-px rounded-lg bg-white" />
-      <div className="pointer-events-none z-0 absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5" />
+      <div className="absolute z-0 inset-px rounded-lg bg-gray-900" />
+      <div className="pointer-events-none z-0 absolute inset-px rounded-lg shadow-sm ring-1 ring-gray-800" />
     </div>
   )
 }

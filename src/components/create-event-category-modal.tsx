@@ -101,10 +101,10 @@ export const CreateEventCategoryModal = ({
       >
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <h2 className="text-lg/7 font-medium tracking-tight text-gray-950">
+            <h2 className="text-lg/7 font-medium tracking-tight text-gray-50">
               New Event Category
             </h2>
-            <p className="text-sm/6 text-gray-600">
+            <p className="text-sm/6 text-gray-400">
               Create a new category to organize your events.
             </p>
           </div>
@@ -180,7 +180,7 @@ export const CreateEventCategoryModal = ({
             </div>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-4 border-t">
+          <div className="flex justify-end space-x-3 pt-4 border-t border-gray-800">
             <Button
               type="button"
               variant="outline"

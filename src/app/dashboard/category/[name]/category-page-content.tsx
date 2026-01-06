@@ -111,6 +111,7 @@ export const CategoryPageContent = ({
 							onClick={() =>
 								column.toggleSorting(column.getIsSorted() === "asc")
 							}
+							className="text-gray-400 hover:text-white"
 						>
 							Date
 							<ArrowUpDown className="ml-2 size-4" />
@@ -263,7 +264,7 @@ export const CategoryPageContent = ({
 
 					<div>
 						<p className="text-2xl font-bold">{relevantSum.toFixed(2)}</p>
-						<p className="text-xs/5 text-muted-foreground">
+						<p className="text-xs/5 text-gray-500">
 							{activeTab === "today"
 								? "today"
 								: activeTab === "week"
@@ -304,7 +305,7 @@ export const CategoryPageContent = ({
 
 							<div>
 								<p className="text-2xl font-bold">{data?.eventsCount || 0}</p>
-								<p className="text-xs/5 text-muted-foreground">
+								<p className="text-xs/5 text-gray-500">
 									Events{" "}
 									{activeTab === "today"
 										? "today"
@@ -323,7 +324,7 @@ export const CategoryPageContent = ({
 			<div className="flex flex-col gap-4">
 				<div className="flex items-center justify-between">
 					<div className="w-full flex flex-col gap-4">
-						<Heading className="text-3xl">Event overview</Heading>
+						<Heading className="text-3xl text-gray-50">Event overview</Heading>
 					</div>
 				</div>
 
@@ -352,7 +353,7 @@ export const CategoryPageContent = ({
 									<TableRow key={rowIndex}>
 										{columns.map((_, cellIndex) => (
 											<TableCell key={cellIndex}>
-												<div className="h-4 w-full bg-gray-200 animate-pulse rounded" />
+												<div className="h-4 w-full bg-gray-800 animate-pulse rounded" />
 											</TableCell>
 										))}
 									</TableRow>
@@ -361,7 +362,7 @@ export const CategoryPageContent = ({
 								table.getRowModel().rows.map((row) => (
 									<TableRow key={row.id}>
 										{row.getVisibleCells().map((cell) => (
-											<TableCell key={cell.id}>
+											<TableCell key={cell.id} className="text-gray-300">
 												{flexRender(
 													cell.column.columnDef.cell,
 													cell.getContext()
@@ -391,6 +392,7 @@ export const CategoryPageContent = ({
 					size="sm"
 					onClick={() => table.previousPage()}
 					disabled={!table.getCanPreviousPage() || isFetching}
+					className="bg-gray-800 border-gray-700 text-white hover:bg-gray-700 hover:text-white"
 				>
 					Previous
 				</Button>
@@ -399,6 +401,7 @@ export const CategoryPageContent = ({
 					size="sm"
 					onClick={() => table.nextPage()}
 					disabled={!table.getCanNextPage() || isFetching}
+					className="bg-gray-800 border-gray-700 text-white hover:bg-gray-700 hover:text-white"
 				>
 					Next
 				</Button>

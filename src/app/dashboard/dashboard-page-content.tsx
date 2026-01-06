@@ -56,9 +56,9 @@ export const DashboardPageContent = () => {
             key={category.id}
             className="relative group z-10 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <div className="absolute z-0 inset-px rounded-lg bg-white" />
+            <div className="absolute z-0 inset-px rounded-lg bg-gray-900" />
 
-            <div className="pointer-events-none z-0 absolute inset-px rounded-lg shadow-sm transition-all duration-300 group-hover:shadow-md ring-1 ring-black/5" />
+            <div className="pointer-events-none z-0 absolute inset-px rounded-lg shadow-sm transition-all duration-300 group-hover:shadow-md ring-1 ring-gray-800" />
 
             <div className="relative p-6 z-10">
               <div className="flex items-center gap-4 mb-6">
@@ -72,17 +72,17 @@ export const DashboardPageContent = () => {
                 />
 
                 <div>
-                  <h3 className="text-lg/7 font-medium tracking-tight text-gray-950">
+                  <h3 className="text-lg/7 font-medium tracking-tight text-white">
                     {category.emoji || "📂"} {category.name}
                   </h3>
-                  <p className="text-sm/6 text-gray-600">
+                  <p className="text-sm/6 text-gray-400">
                     {format(category.createdAt, "MMM d, yyyy")}
                   </p>
                 </div>
               </div>
 
               <div className="space-y-3 mb-6">
-                <div className="flex items-center text-sm/5 text-gray-600">
+                <div className="flex items-center text-sm/5 text-gray-400">
                   <Clock className="size-4 mr-2 text-brand-500" />
                   <span className="font-medium">Last ping:</span>
                   <span className="ml-1">
@@ -91,12 +91,12 @@ export const DashboardPageContent = () => {
                       : "Never"}
                   </span>
                 </div>
-                <div className="flex items-center text-sm/5 text-gray-600">
+                <div className="flex items-center text-sm/5 text-gray-400">
                   <Database className="size-4 mr-2 text-brand-500" />
                   <span className="font-medium">Unique fields:</span>
                   <span className="ml-1">{category.uniqueFieldCount || 0}</span>
                 </div>
-                <div className="flex items-center text-sm/5 text-gray-600">
+                <div className="flex items-center text-sm/5 text-gray-400">
                   <BarChart2 className="size-4 mr-2 text-brand-500" />
                   <span className="font-medium">Events this month:</span>
                   <span className="ml-1">{category.eventsCount || 0}</span>
@@ -109,7 +109,7 @@ export const DashboardPageContent = () => {
                   className={buttonVariants({
                     variant: "outline",
                     size: "sm",
-                    className: "flex items-center gap-2 text-sm",
+                    className: "flex items-center gap-2 text-sm bg-gray-800 border-gray-700 hover:bg-gray-700 text-white hover:text-white",
                   })}
                 >
                   View all <ArrowRight className="size-4" />

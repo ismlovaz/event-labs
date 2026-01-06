@@ -34,10 +34,10 @@ export const UpgradePageContent = ({ plan }: { plan: Plan }) => {
   return (
     <div className="max-w-3xl flex flex-col gap-8">
       <div>
-        <h1 className="mt-2 text-xl/8 font-medium tracking-tight text-gray-900">
+        <h1 className="mt-2 text-xl/8 font-medium tracking-tight text-white">
           {plan === "PRO" ? "Plan: Pro" : "Plan: Free"}
         </h1>
-        <p className="text-sm/6 text-gray-600 max-w-prose">
+        <p className="text-sm/6 text-gray-400 max-w-prose">
           {plan === "PRO"
             ? "Thank you for supporting EventLabs. Find your increased usage limits below."
             : "Get access to more events, categories and premium support."}
@@ -48,7 +48,7 @@ export const UpgradePageContent = ({ plan }: { plan: Plan }) => {
         <Card className="border-2 border-brand-700">
           <div className="flex flex-row items-center justify-between space-y-0 pb-2">
             <p className="text-sm/6 font-medium">Total Events</p>
-            <BarChart className="size-4 text-muted-foreground" />
+            <BarChart className="size-4 text-gray-400" />
           </div>
 
           <div>
@@ -56,7 +56,7 @@ export const UpgradePageContent = ({ plan }: { plan: Plan }) => {
               {usageData?.eventsUsed || 0} of{" "}
               {usageData?.eventsLimit.toLocaleString() || 100}
             </p>
-            <p className="text-xs/5 text-muted-foreground">
+            <p className="text-xs/5 text-gray-400">
               Events this period
             </p>
           </div>
@@ -64,7 +64,7 @@ export const UpgradePageContent = ({ plan }: { plan: Plan }) => {
         <Card>
           <div className="flex flex-row items-center justify-between space-y-0 pb-2">
             <p className="text-sm/6 font-medium">Event Categories</p>
-            <BarChart className="size-4 text-muted-foreground" />
+            <BarChart className="size-4 text-gray-400" />
           </div>
 
           <div>
@@ -72,17 +72,17 @@ export const UpgradePageContent = ({ plan }: { plan: Plan }) => {
               {usageData?.categoriesUsed || 0} of{" "}
               {usageData?.categoriesLimit.toLocaleString() || 10}
             </p>
-            <p className="text-xs/5 text-muted-foreground">Active categories</p>
+            <p className="text-xs/5 text-gray-400">Active categories</p>
           </div>
         </Card>
       </div>
 
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-400">
         Usage will reset{" "}
         {usageData?.resetDate ? (
           format(usageData.resetDate, "MMM d, yyyy")
         ) : (
-          <span className="animate-pulse w-8 h-4 bg-gray-200"></span>
+          <span className="animate-pulse w-8 h-4 bg-gray-800"></span>
         )}
         {plan !== "PRO" ? (
           <span
